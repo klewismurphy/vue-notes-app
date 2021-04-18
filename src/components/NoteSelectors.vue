@@ -1,14 +1,27 @@
 <template>
-  <div class="note-selector">
-    <p class="note-selector-title">Your note...</p>
-    <p class="note-selector-timestamp">Timestamp here...</p>
-  </div>
-  <!-- <div class="note-selector">
-    <p class="note-selector-title">Second note...</p>
-    <p class="note-selector-timestamp">Timestamp here...</p>
-  </div>
-  <div class="note-selector">
-    <p class="note-selector-title">Third note...</p>
-    <p class="note-selector-timestamp">Timestamp here...</p>
-  </div> -->
+  <div class="note-selectors">
+    <NoteSelector v-for="note in notes" v-bind:note="note"/>
+    <!-- (this line didn't work within the NoteSelector v-bind:selectedNoteId="selectedNoteId  -->
+    </div>
 </template>
+
+<script>
+import NoteSelector from "./NoteSelector.vue";
+export default {
+  name: "noteselectors",
+  components: {
+    NoteSelector,
+  },
+  data: function () {
+    return {
+      notes: [
+        { id: 1, body: "This is a first test", timestamp: Date.now() },
+        { id: 2, body: "This is a second test", timestamp: Date.now() },
+        { id: 3, body: "This is a third test", timestamp: Date.now() },
+        { id: 4, body: "This is a fourth test", timestamp: Date.now() },
+      ],
+      // selectedNoteId: note.id,
+    };
+  },
+};
+</script>
